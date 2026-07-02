@@ -1,7 +1,7 @@
 // src/App.jsx
 import { useState, useEffect } from 'react'; // 👈 Importamos useEffect
 import { mesasIniciales } from './data/mesas';
-import Mapa from './components/mapa';
+import Mapa from './components/Mapa';
 import PanelDetalle from './components/PanelDetalle';
 import './App.css';
 
