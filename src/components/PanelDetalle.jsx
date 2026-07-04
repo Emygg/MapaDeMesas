@@ -120,7 +120,7 @@ export default function PanelDetalle({ mesa, listaCompletaMesas, onActualizarMes
           <select value={estado} onChange={(e) => setEstado(e.target.value)}>
             <option value="libre">🟢 Libre</option>
             <option value="ocupada">🔴 Ocupada</option>
-            <option value="sucia">🟠 Sucia / Limpieza</option>
+            <option value="Reservada">🟠 Reservada</option>
           </select>
         </div>
 

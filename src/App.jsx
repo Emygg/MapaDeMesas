@@ -104,10 +104,10 @@ function App() {
     setIdMesaSeleccionada(null);
   };
 
-  // 🔄 FUNCIÓN DE NEGOCIO: Reiniciar el mapa para un nuevo turno o día
+  // FUNCIÓN DE NEGOCIO: Reiniciar el mapa para un nuevo turno o día
   const reiniciarMapaCompleto = () => {
     const confirmar = window.confirm(
-      "⚠️ ¿Estás seguro de reiniciar el turno? Esto liberará todas las uniones, comensales y meseras actuales del mapa."
+      " ¿Estás seguro de reiniciar el turno? Esto liberará todas las uniones, comensales y meseras actuales del mapa."
     );
     if (confirmar) {
       setMesas(mesasIniciales);
@@ -130,19 +130,19 @@ function App() {
     <div className="contenedor-app">
       <header className="barra-superior">
         <div>
-          <h1>Dashboard Hostess 🍽️</h1>
+          <h1>Dashboard Hostess</h1>
           <p style={{ margin: '5px 0 0 0', fontSize: '0.85rem', color: '#7f8c8d' }}>Versión MVP Local</p>
         </div>
         <div style={{ display: 'flex', gap: '15px' }}>
           {/* Botón de reinicio de turno operativo */}
           <button className="btn-reiniciar" onClick={reiniciarMapaCompleto}>
-            🔄 Reiniciar Turno
+            Reiniciar Turno
           </button>
           <button 
             className={`btn-clima ${terrazaHabilitada ? 'sol' : 'lluvia'}`}
             onClick={() => setTerrazaHabilitada(!terrazaHabilitada)}
           >
-            {terrazaHabilitada ? "☀️ Terraza Abierta" : "🌧️ Terraza Cerrada"}
+            {terrazaHabilitada ? "Terraza Abierta" : "Terraza Cerrada"}
           </button>
         </div>
       </header>

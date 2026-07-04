@@ -6,7 +6,7 @@ export default function Mesa({ datosMesa, deshabilitada, esSeleccionada, onSelec
 
   let colorFondo = "#2ecc71"; // Libre
   if (estado === "ocupada") colorFondo = "#e74c3c"; // Ocupada
-  if (estado === "sucia") colorFondo = "#f39c12";   // Sucia
+  if (estado === "reservada") colorFondo = "#f39c12";   // Sucia
 
   if (deshabilitada) colorFondo = "#95a5a6"; // Clima
 
