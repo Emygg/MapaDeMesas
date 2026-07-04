@@ -66,23 +66,22 @@
   grid-template-rows: repeat(9, 95px);
   gap: 20px;
   
-  /* EFECTO ISOMÉTRICO (Rotación en X y Z) */
-  transform: rotateX(55deg) rotateZ(-40deg);
-  transform-style: preserve-3d; /* Permite que las mesas se eleven del piso */
+  /* Lo dejamos derecho (sin rotateZ) y con una inclinación hacia atrás casi imperceptible */
+  transform: rotateX(8deg); 
+  transform-origin: top center; /* CRÍTICO: Esto evita que el mapa se empuje hacia abajo dejando el hueco */
+  transform-style: preserve-3d; 
   
-  /* Piso de cristal esmerilado */
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
   
-  /* Sombra pesada para separar el mapa del fondo de la app */
-  box-shadow: -20px 30px 40px rgba(0,0,0,0.6);
+  /* Sombra más centrada y elegante */
+  box-shadow: 0 25px 50px rgba(0,0,0,0.5);
   width: max-content;
   margin: 0 auto;
-  transition: transform 0.5s ease;
 }
 
 /* Tarjeta de la Mesa */
@@ -96,19 +95,20 @@
   cursor: pointer;
   position: relative;
   
-  /* EFECTO CRISTAL (Glassmorphism) */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   
-  /* Elevación 3D en el eje Z */
-  transform: translateZ(20px);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra en el texto para legibilidad */
+  /* Se elevan sutilmente del cristal base */
+  transform: translateZ(10px);
+  transition: all 0.2s ease-out;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  
+  /* EL TRUCO 3D: Sombra dura abajo para dar grosor + sombra difuminada para flotar */
+  box-shadow: 0 6px 0 rgba(0,0,0,0.15), 0 12px 15px rgba(0,0,0,0.3) !important;
 }
 .tarjeta-mesa:hover {
-  /* Se elevan más hacia el usuario */
-  transform: translateZ(40px) scale(1.05); 
-  box-shadow: -10px 20px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.3) !important;
+  transform: translateZ(25px) translateY(-4px); 
+  box-shadow: 0 10px 0 rgba(0,0,0,0.15), 0 20px 25px rgba(0,0,0,0.4) !important;
 }
 .tarjeta-mesa h4 { margin: 0; font-size: 1.1rem; letter-spacing: 0.5px; }
 .tarjeta-mesa p { margin: 0; font-size: 0.85rem; font-weight: bold; }
@@ -132,11 +132,10 @@
 
 .contenedor-mapa-scroll {
   flex: 1;
-  /* La perspectiva le da profundidad a la rotación */
-  perspective: 1200px; 
+  perspective: 1500px; /* Perspectiva más suave */
   display: flex;
   justify-content: center;
-  padding-top: 40px; 
+  padding-top: 10px; /* Reducimos el espacio inútil */
 }
 
 /* Panel Lateral */
