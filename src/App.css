@@ -2,8 +2,11 @@
 
 :root {
   font-family: Arial, sans-serif;
-  background-color: #f5f6fa;
+  /* Gradiente nocturno súper elegante */
+  background: linear-gradient(135deg, #1e272e 0%, #2f3640 100%);
+  color: #f5f6fa; /* Texto general en blanco */
   margin: 0;
+  min-height: 100vh;
 }
 
 .contenedor-app {
@@ -18,6 +21,10 @@
   align-items: center;
   border-bottom: 2px solid #dcdde1;
   padding-bottom: 15px;
+}
+.barra-superior h1, 
+.barra-superior p {
+  color: #ffffff;
 }
 
 .btn-clima {
@@ -40,48 +47,68 @@
   margin: 20px 0;
 }
 .kpi-card {
-  background-color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  /* resto de propiedades que ya tenías... */
   padding: 15px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
-.kpi-card h3 { margin: 0; font-size: 2rem; color: #2d3436; }
-.kpi-card p { margin: 5px 0 0 0; color: #7f8c8d; }
+.kpi-card h3 { margin: 0; font-size: 2rem; color: #ffffff; }
+.kpi-card p { margin: 5px 0 0 0; color: #b2bec3; }
 
 /* El Plano del Restaurante conforme a tu dibujo */
 .plano-restaurante {
   display: grid;
-  /* Columna 1: 160px (Mesas izq) | Columna 2: 100px (Pasillo) | Columna 3: 160px (Mesas der) */
   grid-template-columns: 160px 100px 160px;
-  /* Definimos las 9 filas de 95px de alto cada una */
   grid-template-rows: repeat(9, 95px);
   gap: 20px;
-  background-color: #ffffff;
+  
+  /* EFECTO ISOMÉTRICO (Rotación en X y Z) */
+  transform: rotateX(55deg) rotateZ(-40deg);
+  transform-style: preserve-3d; /* Permite que las mesas se eleven del piso */
+  
+  /* Piso de cristal esmerilado */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  justify-content: center;
+  border-radius: 20px;
+  
+  /* Sombra pesada para separar el mapa del fondo de la app */
+  box-shadow: -20px 30px 40px rgba(0,0,0,0.6);
   width: max-content;
   margin: 0 auto;
+  transition: transform 0.5s ease;
 }
 
 /* Tarjeta de la Mesa */
 .tarjeta-mesa {
   color: #ffffff;
   padding: 12px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.12);
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  /* EFECTO CRISTAL (Glassmorphism) */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Elevación 3D en el eje Z */
+  transform: translateZ(20px);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Sombra en el texto para legibilidad */
 }
 .tarjeta-mesa:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  /* Se elevan más hacia el usuario */
+  transform: translateZ(40px) scale(1.05); 
+  box-shadow: -10px 20px 25px rgba(0,0,0,0.5), inset 0 0 15px rgba(255,255,255,0.3) !important;
 }
 .tarjeta-mesa h4 { margin: 0; font-size: 1.1rem; letter-spacing: 0.5px; }
 .tarjeta-mesa p { margin: 0; font-size: 0.85rem; font-weight: bold; }
@@ -105,6 +132,11 @@
 
 .contenedor-mapa-scroll {
   flex: 1;
+  /* La perspectiva le da profundidad a la rotación */
+  perspective: 1200px; 
+  display: flex;
+  justify-content: center;
+  padding-top: 40px; 
 }
 
 /* Panel Lateral */
